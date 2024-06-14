@@ -1,5 +1,12 @@
 package br.com.rotadacerveja.API.dto;
 
-public record PublicationResponse() {
+import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record PublicationResponse(
+  String author, 
+  @JsonProperty("publication_date")
+  LocalDateTime publicationDate, 
+  String summary) {
 }

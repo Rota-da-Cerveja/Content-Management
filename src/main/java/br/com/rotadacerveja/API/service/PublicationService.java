@@ -16,6 +16,5 @@ public class PublicationService {
     public Flux<PublicationResponse> getPublication(){
         return publicationProducer.asFlux();
     }
-
     
 }
