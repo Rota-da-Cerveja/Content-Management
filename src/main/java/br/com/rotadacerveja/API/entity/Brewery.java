@@ -1,10 +1,15 @@
 package br.com.rotadacerveja.API.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,5 +32,10 @@ public class Brewery {
   @Column(columnDefinition = "TEXT")
   private String description;
 
-  private String location;
+  private Float latitude;
+  private Float longitude;
+
+  @OneToMany(mappedBy = "brewery", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Beer> beers;
+
 }

@@ -1,6 +1,5 @@
 package br.com.rotadacerveja.API.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,14 +35,13 @@ public class BreweryService {
 
     private BreweryResponse convertToResponse(Brewery brewery) {
 
-        String[] parts = brewery.getLocation().split(" ");
-        List<Float> coordinates = new ArrayList<>();
-        for (String part : parts) {
-            coordinates.add(Float.parseFloat(part));
-        }
-
-        return new BreweryResponse(brewery.getName(), brewery.getBrewmaster(), brewery.getDescription(),
-        coordinates);
+        return BreweryResponse.builder()
+                .name(brewery.getName())
+                .description(brewery.getDescription())
+                .brewmaster(brewery.getBrewmaster())
+                .latitude(brewery.getLatitude())
+                .longitude(brewery.getLongitude())
+                .beers(brewery.getBeers().stream().map(b -> b.getName()).toList())
+                .build();
     }
-
 }
