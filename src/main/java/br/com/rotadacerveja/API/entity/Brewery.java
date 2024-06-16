@@ -23,4 +23,9 @@ public class Brewery {
 
   @Column(length = 45)
   private String brewmaster;
+
+  @Column(columnDefinition = "TEXT")
+  private String description;
+
+  private String location;
 }

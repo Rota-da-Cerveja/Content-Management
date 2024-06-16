@@ -1,5 +1,7 @@
 package br.com.rotadacerveja.API.dto;
 
-public record BreweryResponse() {
+import java.util.List;
+
+public record BreweryResponse(String name, String brewmaster, String description, List<Float> location) {
 
 }
