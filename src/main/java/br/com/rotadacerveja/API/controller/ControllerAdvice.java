@@ -4,13 +4,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import br.com.rotadacerveja.API.exception.BreweryNotFoundException;
+import br.com.rotadacerveja.API.exception.NotFoundException;
 
 @org.springframework.web.bind.annotation.ControllerAdvice
 @CrossOrigin
 public class ControllerAdvice {
-   @ExceptionHandler({BreweryNotFoundException.class})
-  ResponseEntity<Void> handleBreweryNotFound(BreweryNotFoundException ex){
+   @ExceptionHandler({NotFoundException.class})
+  ResponseEntity<Void> handleBreweryNotFound(NotFoundException ex){
     return ResponseEntity.notFound().build();
   }
 }

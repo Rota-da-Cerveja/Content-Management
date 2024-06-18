@@ -7,25 +7,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.rotadacerveja.API.dto.BreweryResponse;
+import br.com.rotadacerveja.API.dto.BeerResponse;
 import br.com.rotadacerveja.API.exception.NotFoundException;
-import br.com.rotadacerveja.API.service.BreweryService;
+import br.com.rotadacerveja.API.service.BeerService;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("brewery")
-@RequiredArgsConstructor
+@RequestMapping("beer")
 @CrossOrigin
-public class BreweryController {
+@RequiredArgsConstructor
+public class BeerController {
 
-  private final BreweryService breweryService;
+  private final BeerService beerService;
 
-  @GetMapping("/{name}")
-  public ResponseEntity<Mono<BreweryResponse>> getBrewery(@PathVariable String name){
+   @GetMapping("/{name}")
+  public ResponseEntity<Mono<BeerResponse>> getBeer(@PathVariable String name){
     System.out.println(name);
-
-    return breweryService.findByName(name)
+    return beerService.findByName(name)
     .map(b -> ResponseEntity.ok(Mono.just(b)))
     .orElseThrow(() -> new NotFoundException());
   }

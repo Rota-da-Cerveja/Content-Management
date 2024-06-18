@@ -1,5 +1,7 @@
 package br.com.rotadacerveja.API.dto;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Builder;
@@ -16,4 +18,11 @@ public record BeerResponse(
   Integer alcoholContent,
   String description,
   String type,
-  Double volume) {}
+  Double volume,
+  String brewery,
+  String color,
+  String glass,
+  Integer body,
+  Integer aroma,
+  Integer malt,
+  List<String> harmonization) {}
